@@ -86,3 +86,9 @@ a{
     text-decoration: none;
     font-weight: 500;
 }
+.article-img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+}
+
