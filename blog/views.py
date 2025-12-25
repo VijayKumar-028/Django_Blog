@@ -11,16 +11,16 @@ def home(request):
     }
     return render(request,'blog/home.html',context)
 
-class PostListView(ListView):
+class PostListView(ListView):           #List view for the posts
     model=Post
     template_name = 'blog/home.html' #<app>/<model>_<viewtype>.html
     context_object_name='posts'
     ordering = ['-date_posted']
 
-class PostDetailView(DetailView):
+class PostDetailView(DetailView): #detailed view for every post
     model=Post
 
-class PostCreateView(LoginRequiredMixin,CreateView):
+class PostCreateView(LoginRequiredMixin,CreateView):  #creation of the post
     model=Post
     fields = ['title','content']
 
@@ -28,7 +28,7 @@ class PostCreateView(LoginRequiredMixin,CreateView):
         form.instance.author=self.request.user
         return super().form_valid(form)
 
-class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
+class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):        #Updation of the post
     model=Post
     fields = ['title','content']
 
@@ -42,7 +42,7 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
             return True
         return False
 
-class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):        #Deletion of the post
     model=Post
     success_url = '/'
     def test_func(self):
