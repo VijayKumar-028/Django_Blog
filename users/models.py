@@ -9,7 +9,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs): #Profile image resizing using the pillow library
         super().save(*args, **kwargs)
 
         img=Image.open(self.image.path)
