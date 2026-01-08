@@ -1,6 +1,6 @@
 from .models import Post
 
-def sidebar_data(request): #Side bar to get the top 5 posts
+def sidebar_data(request): #Side bar to get the top 5 Posts
     return {
         'latest_posts': Post.objects.order_by('-date_posted')[:5]
     }
