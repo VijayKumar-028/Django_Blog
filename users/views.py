@@ -19,7 +19,7 @@ def logout_view(request):
     logout(request)
     return render(request, 'users/logout.html')
 
-@login_required
+@login_required #Decorator for the login requirement
 def profile(request): #
     if request.method == 'POST':
         u_form=UserUpdateForm(request.POST, instance=request.user)
